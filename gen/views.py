@@ -44,6 +44,7 @@ def index(request):
 
     context = { 
         'asc': Article.objects.order_by('publications__title'),
-        'desc': ids_asc
+        'desc': ids_asc,
+        'full': Article.objects.all()
     }
     return render(request, 'base.html', context = context)

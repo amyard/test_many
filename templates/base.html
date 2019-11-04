@@ -19,9 +19,18 @@
 {% block content %}
     <br><br>
     <div style='display: inline-flex;'>
+        <div style='width: 500px; border: 1px solid green;'>
+            <ul>
+                <h4>All created data.</h4>
+                {% for item in full %}
+                    <li>{% for i in item.publications.all %}{{ i.title }}, {% endfor %}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
         <div style='width: 500px; border: 1px solid orangered;'>
             <ul>
-                <h4>Order by Default: Article.objects.order_by('publications__title')</h4>
+                <h4>Order by Default: Article.objects.order_by('publications__title').</h4>
                 {% for item in asc %}
                     <li>{% for i in item.publications.all %}{{ i.title }}, {% endfor %}</li>
                 {% endfor %}
@@ -30,7 +39,7 @@
     
         <div style='width: 500px; border: 1px solid yellowgreen; float: left;'>
             <ul>
-                <h4>Order with Pandas. Need such result</h4>
+                <h4>Order with Pandas. Need such result.</h4>
                 {% for item in desc %}
                     <li>{% for i in item.publications.all %}{{ i.title }}, {% endfor %}</li>
                 {% endfor %}
